@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Stackly &mdash; AI-Powered Cybersecurity Platform</title>
+  <meta name="description" content="Stackly protects 50M+ users from malware, ransomware, phishing and data breaches with real-time AI security.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+<!-- ══ SPLASH ══════════════════════════════════════════════ -->
+<div id="splash-screen">
+  <div class="splash-logo-wrap">
+    <div class="splash-rings">
+      <div class="splash-ring"></div>
+      <div class="splash-ring"></div>
+      <div class="splash-ring"></div>
+    </div>
+    <div class="splash-icon">&#x1F6E1;&#xFE0F;</div>
+    <div class="splash-brand">Stackly</div>
+    <div class="splash-sub">AI-Powered Security</div>
+  </div>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+  <div class="splash-status">Initializing BrainShield AI Engine&hellip;</div>
+</div>
+
+<!-- ══ LIVE THREAT TICKER ══════════════════════════════════ -->
+<div class="threat-ticker">
+  <span class="ticker-label">&#x1F534; LIVE</span>
+  <div class="ticker-track">
+    <span class="ticker-item">&#x1F6E1;&#xFE0F; Blocked: <span>LockBit Ransomware</span> &mdash; Mumbai, IN</span>
+    <span class="ticker-item">&#x26A1; <span>2,847</span> threats neutralized in the last hour</span>
+    <span class="ticker-item">&#x1F512; New patch: <span>CVE-2026-3841</span> deployed</span>
+    <span class="ticker-item">&#x1F30D; Attack wave from <span>Eastern Europe</span> &mdash; all users protected</span>
+    <span class="ticker-item">&#x1F4CA; Detection rate today: <span>99.97%</span></span>
+    <span class="ticker-item">&#x1F576;&#xFE0F; Dark web scan: <span>0 new breaches</span> found</span>
+    <span class="ticker-item">&#x26A1; Blocked: <span>Emotet Trojan</span> &mdash; Bangalore, IN</span>
+    <span class="ticker-item">&#x1F6E1;&#xFE0F; Blocked: <span>LockBit Ransomware</span> &mdash; Mumbai, IN</span>
+    <span class="ticker-item">&#x26A1; <span>2,847</span> threats neutralized in the last hour</span>
+    <span class="ticker-item">&#x1F4CA; Detection rate today: <span>99.97%</span></span>
+  </div>
+</div>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="brand-icon">&#x1F6E1;&#xFE0F;</div>
+    <span class="brand-name">Stackly</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="nav-dot"></div>
+    All systems secure
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">&#x1F3E0; Home</a>
+  <a href="about.html">&#x1F3E2; About</a>
+  <a href="services.html">&#x1F6E1;&#xFE0F; Services</a>
+  <a href="blog.html">&#x1F4F0; Blog</a>
+  <a href="contact.html">&#x1F4EC; Contact</a>
+  <div class="mobile-divider"></div>
+  <a href="login.html" class="btn btn-ghost btn-full">Login</a>
+  <a href="register.html" class="btn btn-primary btn-full" style="margin-top:8px;">Register Free</a>
+</div>
+
+<!-- ══ HERO SECTION ═════════════════════════════════════════
+     FMCG Patterns: Crossfade BG slides · Floating elements
+     Glassmorphic pill-switcher · Scroll-down cue
+     ═════════════════════════════════════════════════════════ -->
+<section id="hero">
+
+  <!-- Background slide images (crossfade on switcher click) -->
+  <div class="hero-slide hero-slide-0"></div>
+  <div class="hero-slide hero-slide-1"></div>
+  <div class="hero-slide hero-slide-2"></div>
+
+  <!-- Dark overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Scanlines -->
+  <div class="hero-scanlines"></div>
+
+  <!-- Glowing blobs -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <!-- Floating icons (like FMCG leaves) -->
+  <div class="hero-float-el fe-1">&#x1F6E1;&#xFE0F;</div>
+  <div class="hero-float-el fe-2">&#x1F512;</div>
+  <div class="hero-float-el fe-3">&#x26A1;</div>
+  <div class="hero-float-el fe-4">&#x1F576;&#xFE0F;</div>
+  <div class="hero-float-el fe-5">&#x2B22;</div>
+  <div class="hero-float-el fe-6">&#x1F511;</div>
+
+  <!-- Particle canvas + grid -->
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-grid"></div>
+  <div class="hero-vignette"></div>
+
+  <!-- ── Hero content ── -->
+  <div class="hero-content">
+    <div class="hero-label">
+      <div class="hero-label-dot"></div>
+      Live Protection Active &mdash; 50M+ Users Secured
+    </div>
+
+    <h1 class="hero-headline">
+      <span class="hl-main">AI Defense Against</span>
+      <span class="hl-gradient">
+        <span class="hl-typewriter"><span id="typewriter" data-words='["Malware","Ransomware","Phishing","Data Breaches","Hackers","Zero-Days"]'>Malware</span></span>
+      </span>
+    </h1>
+
+    <p class="hero-desc">
+      Stackly&rsquo;s BrainShield AI monitors 10 billion threat signals daily &mdash; protecting your devices, identity and data 24/7 across 190+ countries.
+    </p>
+
+    <div class="hero-actions">
+      <a href="404.html" class="btn btn-primary btn-lg">&#x1F6E1;&#xFE0F;&nbsp; Start Free Protection</a>
+      <a href="404.html" class="btn btn-outline btn-lg">Explore Features &rarr;</a>
+    </div>
+
+    <div class="hero-trust">
+      <div class="trust-avs">
+        <div class="trust-av ta1">RK</div>
+        <div class="trust-av ta2">SA</div>
+        <div class="trust-av ta3">JL</div>
+        <div class="trust-av ta4">AM</div>
+      </div>
+      <div class="trust-info">
+        <strong>50M+ users worldwide</strong>
+        <span>&#x2B50; 4.9 / 5 from 2M+ reviews</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Glassmorphic pill-switcher (FMCG style) ── -->
+  <div class="hero-switcher">
+    <button class="switcher-btn active" data-idx="0">
+      <span class="sw-icon">&#x1F6E1;&#xFE0F;</span> Protect
+    </button>
+    <button class="switcher-btn" data-idx="1">
+      <span class="sw-icon">&#x1F50D;</span> Detect
+    </button>
+    <button class="switcher-btn" data-idx="2">
+      <span class="sw-icon">&#x26A1;</span> Respond
+    </button>
+  </div>
+
+  <!-- ── Scroll cue (FMCG style) ── -->
+  <div class="hero-scroll-cue">
+    <div class="scroll-cue-line"></div>
+    <div class="scroll-cue-text">Scroll</div>
+  </div>
+
+</section>
+
+<!-- Hero stats bar (below hero, inside its own section) -->
+<div class="hero-stats" style="margin:0 auto;max-width:1200px;padding:0 48px;">
+  <div class="hs">
+    <div class="hs-num" data-count="50" data-suffix="M+">0</div>
+    <div class="hs-lbl">Users Protected</div>
+  </div>
+  <div class="hs">
+    <div class="hs-num" data-count="99" data-suffix=".7%">0</div>
+    <div class="hs-lbl">Detection Rate</div>
+  </div>
+  <div class="hs">
+    <div class="hs-num" data-count="190" data-suffix="+">0</div>
+    <div class="hs-lbl">Countries</div>
+  </div>
+  <div class="hs">
+    <div class="hs-num">0.003s</div>
+    <div class="hs-lbl">Avg Response</div>
+  </div>
+</div>
+
+<!-- ══ MARQUEE SEPARATOR (FMCG marquee) ════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>99.7%</strong> Detection Rate</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>50M+</strong> Users Protected</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>2,847</strong> Threats Blocked Today</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>0.003s</strong> Response Time</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>190+</strong> Countries Covered</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>24/7</strong> AI Monitoring</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>AES-256</strong> Encryption</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>Zero-Log</strong> VPN Policy</div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>99.7%</strong> Detection Rate</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>50M+</strong> Users Protected</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>2,847</strong> Threats Blocked Today</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>0.003s</strong> Response Time</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>190+</strong> Countries Covered</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>24/7</strong> AI Monitoring</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>AES-256</strong> Encryption</div>
+    <div class="marquee-item"><span class="mi-sep">&#x2B22;</span> <strong>Zero-Log</strong> VPN Policy</div>
+  </div>
+</div>
+
+<!-- ══ FEATURES — 2-col image + list ══════════════════════ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="feat-grid">
+
+      <!-- Visual side -->
+      <div class="feat-visual reveal">
+        <div class="feat-img-wrap">
+          <img src="images/features.webp" alt="Stackly Security Features">
+        </div>
+        <div class="feat-badge fb1">
+          <div class="fb-num">99.7%</div>
+          <div class="fb-lbl">Detection Rate</div>
+        </div>
+        <div class="feat-badge fb2">
+          <div class="fb-num">0ms</div>
+          <div class="fb-lbl">Performance Hit</div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div>
+        <div class="section-tag">Why Stackly</div>
+        <h2 class="section-h2">One Platform.<br><span>Total Protection.</span></h2>
+        <p class="section-desc">Our BrainShield AI learns from 10 billion signals daily to stop even zero-day attacks before they execute.</p>
+        <div class="feat-list">
+          <div class="feat-item reveal">
+            <div class="fi-ico ic-cyan">&#x1F6E1;&#xFE0F;</div>
+            <div class="fi-body">
+              <h4>AI Real-Time Detection</h4>
+              <p>Scans 100,000+ files/sec and blocks threats before execution &mdash; no signatures needed.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal d1">
+            <div class="fi-ico ic-violet">&#x1F512;</div>
+            <div class="fi-body">
+              <h4>Zero-Log VPN &mdash; 5,000+ Servers</h4>
+              <p>Military-grade AES-256 encryption across 90 countries. Your IP stays completely hidden.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal d2">
+            <div class="fi-ico ic-green">&#x1F576;&#xFE0F;</div>
+            <div class="fi-body">
+              <h4>24/7 Dark Web Monitoring</h4>
+              <p>Continuous surveillance of your email, phone and cards across 5M+ dark web pages.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal d3">
+            <div class="fi-ico ic-amber">&#x1F511;</div>
+            <div class="fi-body">
+              <h4>Zero-Knowledge Password Vault</h4>
+              <p>AES-256 encrypted vault &mdash; only you can access it. Even Stackly can&rsquo;t see your passwords.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal d4">
+            <div class="fi-ico ic-rose">&#x1F525;</div>
+            <div class="fi-body">
+              <h4>Smart Adaptive Firewall</h4>
+              <p>Learns your network patterns to block intrusions while allowing legitimate traffic automatically.</p>
+            </div>
+          </div>
+        </div>
+        <a href="404.html" class="btn btn-primary" style="margin-top:32px;">Explore All Features &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ORBIT SECTION (FMCG product-orbit adapted) ══════════ -->
+<section id="orbit-section">
+  <div class="section-inner">
+    <div class="orbit-wrap">
+      <div class="text-center reveal">
+        <div class="section-tag">Threat Intelligence</div>
+        <h2 class="section-h2">What BrainShield <span>Stops Every Day</span></h2>
+        <p class="section-desc" style="margin:0 auto;">Hover over any threat to see how Stackly neutralizes it in real-time.</p>
+      </div>
+
+      <!-- Orbit stage -->
+      <div class="orbit-stage">
+        <!-- Dashed orbit rings -->
+        <div class="orbit-ring or-1"></div>
+        <div class="orbit-ring or-2"></div>
+
+        <!-- Center AI shield core -->
+        <div class="orbit-core">
+          <div class="orbit-core-icon">&#x1F916;</div>
+          <div class="orbit-core-lbl">BrainShield</div>
+        </div>
+
+        <!-- 6 Threat orbit nodes -->
+        <div class="orbit-node">
+          <div class="orbit-node-icon">&#x1F9F9;</div>
+          <div class="orbit-node-lbl">Malware</div>
+          <div class="orbit-card">
+            <h4>Malware Detection</h4>
+            <p>AI behavioral analysis detects malware in 0.003s without signature files.</p>
+            <span class="oc-badge">&#x2713; Blocked in 0.003s</span>
+          </div>
+        </div>
+
+        <div class="orbit-node">
+          <div class="orbit-node-icon">&#x1F480;</div>
+          <div class="orbit-node-lbl">Ransomware</div>
+          <div class="orbit-card">
+            <h4>Ransomware Shield</h4>
+            <p>Detects encryption behavior instantly, rolls back changes before data is lost.</p>
+            <span class="oc-badge">&#x2713; Auto-rollback ready</span>
+          </div>
+        </div>
+
+        <div class="orbit-node">
+          <div class="orbit-node-icon">&#x1F3A3;</div>
+          <div class="orbit-node-lbl">Phishing</div>
+          <div class="orbit-card">
+            <h4>Phishing Protection</h4>
+            <p>AI scans every link and email in real-time, blocking fake sites before you click.</p>
+            <span class="oc-badge">&#x2713; 99.4% catch rate</span>
+          </div>
+        </div>
+
+        <div class="orbit-node">
+          <div class="orbit-node-icon">&#x1F41B;</div>
+          <div class="orbit-node-lbl">Trojans</div>
+          <div class="orbit-card">
+            <h4>Trojan Removal</h4>
+            <p>Detects hidden trojans disguised as legitimate software through heuristic scanning.</p>
+            <span class="oc-badge">&#x2713; Deep scan active</span>
+          </div>
+        </div>
+
+        <div class="orbit-node">
+          <div class="orbit-node-icon">&#x1F4E1;</div>
+          <div class="orbit-node-lbl">Spyware</div>
+          <div class="orbit-card">
+            <h4>Spyware Blocker</h4>
+            <p>Monitors all outbound data requests, blocking unauthorized data collection attempts.</p>
+            <span class="oc-badge">&#x2713; Privacy enforced</span>
+          </div>
+        </div>
+
+        <div class="orbit-node">
+          <div class="orbit-node-icon">&#x1F4A5;</div>
+          <div class="orbit-node-lbl">DDoS</div>
+          <div class="orbit-card">
+            <h4>DDoS Defense</h4>
+            <p>Traffic anomaly detection absorbs and deflects distributed denial-of-service floods.</p>
+            <span class="oc-badge">&#x2713; Network hardened</span>
+          </div>
+        </div>
+      </div><!-- /orbit-stage -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ════════════════════════════════════════════════ -->
+<section id="stats">
+  <div class="stats-g">
+    <div class="stat-c reveal">
+      <div class="stat-ico">&#x1F6E1;&#xFE0F;</div>
+      <div class="stat-num" data-count="2847" data-suffix="">0</div>
+      <div class="stat-lbl">Threats Blocked Today</div>
+    </div>
+    <div class="stat-c reveal d1">
+      <div class="stat-ico">&#x26A1;</div>
+      <div class="stat-num">0.003s</div>
+      <div class="stat-lbl">Average Response Time</div>
+    </div>
+    <div class="stat-c reveal d2">
+      <div class="stat-ico">&#x1F30D;</div>
+      <div class="stat-num" data-count="50" data-suffix="M+">0</div>
+      <div class="stat-lbl">Protected Users</div>
+    </div>
+    <div class="stat-c reveal d3">
+      <div class="stat-ico">&#x1F3C6;</div>
+      <div class="stat-num">99.7%</div>
+      <div class="stat-lbl">Malware Detection Rate</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DASHBOARD SHOWCASE ══════════════════════════════════ -->
+<section id="dashboard-showcase">
+  <div class="section-inner">
+    <div class="showcase-wrap">
+      <div class="text-center reveal">
+        <div class="section-tag">Live Dashboard</div>
+        <h2 class="section-h2">Your Security at a <span>Glance</span></h2>
+        <p class="section-desc" style="margin:0 auto;">Monitor every threat, device and vulnerability from one powerful dashboard &mdash; real-time, always.</p>
+      </div>
+
+      <div class="showcase-mockup reveal">
+        <div class="mock-bar">
+          <div class="mock-dot md-r"></div>
+          <div class="mock-dot md-y"></div>
+          <div class="mock-dot md-g"></div>
+          <div class="mock-url">app.stackly.io &mdash; Security Dashboard</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-stat">
+            <div class="ms-ico">&#x1F6E1;&#xFE0F;</div>
+            <div class="ms-num">2,847</div>
+            <div class="ms-lbl">Threats Blocked</div>
+            <div class="ms-trend trend-up">&#x2191; 12% vs yesterday</div>
+          </div>
+          <div class="mock-stat">
+            <div class="ms-ico">&#x26A1;</div>
+            <div class="ms-num">0.003s</div>
+            <div class="ms-lbl">Response Time</div>
+            <div class="ms-trend trend-up">&#x25C6; Optimal</div>
+          </div>
+          <div class="mock-stat">
+            <div class="ms-ico">&#x1F30D;</div>
+            <div class="ms-num">5</div>
+            <div class="ms-lbl">Devices Protected</div>
+            <div class="ms-trend trend-up">&#x2191; All online</div>
+          </div>
+          <div class="mock-stat">
+            <div class="ms-ico">&#x1F511;</div>
+            <div class="ms-num">147</div>
+            <div class="ms-lbl">Passwords Secured</div>
+            <div class="ms-trend trend-warn">&#x26A0; 2 need update</div>
+          </div>
+          <div class="mock-chart">
+            <div class="mc-title">&#x1F4CA; Threats Blocked &mdash; Last 7 Days</div>
+            <div class="mc-bars">
+              <div class="mc-bar" style="height:45%"></div>
+              <div class="mc-bar" style="height:62%"></div>
+              <div class="mc-bar v" style="height:80%"></div>
+              <div class="mc-bar" style="height:55%"></div>
+              <div class="mc-bar" style="height:72%"></div>
+              <div class="mc-bar v" style="height:90%"></div>
+              <div class="mc-bar" style="height:65%"></div>
+            </div>
+          </div>
+          <div class="mock-threats">
+            <div class="mt-title">&#x1F6A8; Recent Threats</div>
+            <div class="mt-row"><span class="mt-name">Ransomware.LockBit</span><span class="mt-badge tb-hi">HIGH</span><span class="mt-count">Blocked</span></div>
+            <div class="mt-row"><span class="mt-name">Phishing.Gmail.Spoof</span><span class="mt-badge tb-md">MED</span><span class="mt-count">Blocked</span></div>
+            <div class="mt-row"><span class="mt-name">Adware.BrowserHijack</span><span class="mt-badge tb-lo">LOW</span><span class="mt-count">Quarantine</span></div>
+            <div class="mt-row"><span class="mt-name">Trojan.Emotet.v3</span><span class="mt-badge tb-hi">HIGH</span><span class="mt-count">Blocked</span></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="404.html" class="btn btn-violet btn-lg">View Full Dashboard &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURE CARDS GRID ══════════════════════════════════ -->
+<section id="fcard-grid">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="section-tag">Full Suite</div>
+      <h2 class="section-h2">Every Tool You <span>Need to Stay Safe</span></h2>
+    </div>
+    <div class="fcard-g">
+      <div class="fcard reveal">
+        <div class="fcard-ico ic-cyan">&#x1F6E1;&#xFE0F;</div>
+        <h3>Antivirus</h3>
+        <p>AI-powered real-time malware protection with 99.7% detection rate and zero performance impact.</p>
+      </div>
+      <div class="fcard reveal d1">
+        <div class="fcard-ico ic-violet">&#x1F310;</div>
+        <h3>VPN</h3>
+        <p>Zero-log VPN with 5,000+ servers in 90 countries. Ultra-fast WireGuard connections.</p>
+      </div>
+      <div class="fcard reveal d2">
+        <div class="fcard-ico ic-rose">&#x1F525;</div>
+        <h3>Smart Firewall</h3>
+        <p>Bi-directional traffic monitoring with adaptive machine-learning based firewall rules.</p>
+      </div>
+      <div class="fcard reveal d3">
+        <div class="fcard-ico ic-amber">&#x1F511;</div>
+        <h3>Password Vault</h3>
+        <p>AES-256 zero-knowledge vault with breach monitoring, auto-fill and password health scores.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="fcard-ico ic-green">&#x1F576;&#xFE0F;</div>
+        <h3>Dark Web Monitor</h3>
+        <p>Real-time scanning of 5M+ dark web pages for your email, phone and financial data.</p>
+      </div>
+      <div class="fcard reveal d1">
+        <div class="fcard-ico ic-cyan">&#x1F4F1;</div>
+        <h3>Multi-Device</h3>
+        <p>Protect Windows, Mac, Android, iOS and Linux from one unified account and dashboard.</p>
+      </div>
+      <div class="fcard reveal d2">
+        <div class="fcard-ico ic-violet">&#x1F4E7;</div>
+        <h3>Email Shield</h3>
+        <p>AI scans every email for phishing links, malware attachments and domain spoofing in real-time.</p>
+      </div>
+      <div class="fcard reveal d3">
+        <div class="fcard-ico ic-rose">&#x1F916;</div>
+        <h3>BrainShield AI</h3>
+        <p>Our proprietary AI detects zero-day threats using deep behavioral analysis &mdash; not signatures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ════════════════════════════════════════ -->
+<section id="hiw">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-h2">Protected in <span>3 Simple Steps</span></h2>
+      <p class="section-desc" style="margin:0 auto;">From signup to full protection in under 60 seconds. No technical knowledge required.</p>
+    </div>
+    <div class="hiw-g">
+      <div class="hiw-c reveal">
+        <div class="hiw-num">1</div>
+        <h3>Create Your Account</h3>
+        <p>Register in 30 seconds &mdash; no credit card, no commitments. Choose your plan anytime. Free tier available forever.</p>
+      </div>
+      <div class="hiw-c reveal d1">
+        <div class="hiw-num">2</div>
+        <h3>Install on Devices</h3>
+        <p>Download our lightweight app for Windows, Mac, Android or iOS. Installation completes in under 60 seconds.</p>
+      </div>
+      <div class="hiw-c reveal d2">
+        <div class="hiw-num">3</div>
+        <h3>Stay Safe 24/7</h3>
+        <p>BrainShield AI activates immediately. Get real-time threat alerts and monitor everything from your dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══════════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-h2">Start Free. <span>Scale When Ready.</span></h2>
+      <p class="section-desc" style="margin:0 auto;">Every plan includes core AI protection. Upgrade anytime. Cancel whenever. No questions asked.</p>
+    </div>
+    <div class="pricing-g">
+
+      <div class="pc reveal">
+        <div class="pc-icon">&#x1F6E1;&#xFE0F;</div>
+        <div>
+          <div class="pc-name">Stackly Free</div>
+          <div class="pc-desc" style="margin-top:6px;">Essential protection on one device, forever free.</div>
+        </div>
+        <div class="pc-price"><sup>$</sup><span class="pc-amt">0</span><span class="pc-period">/mo</span></div>
+        <div style="font-size:0.74rem;color:var(--dim);">No credit card required</div>
+        <div class="pc-feats">
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Antivirus &amp; anti-malware</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Real-time threat scanning</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> 1 device protected</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Email threat alerts</div>
+          <div class="pc-feat"><div class="pc-check ch-no">&#x2715;</div> VPN access</div>
+          <div class="pc-feat"><div class="pc-check ch-no">&#x2715;</div> Dark web monitor</div>
+          <div class="pc-feat"><div class="pc-check ch-no">&#x2715;</div> Password manager</div>
+        </div>
+        <a href="register.html" class="btn btn-ghost btn-full">Register Free</a>
+      </div>
+
+      <div class="pc featured reveal d1">
+        <div class="pc-badge">&#x2B50; Most Popular</div>
+        <div class="pc-icon">&#x1F680;</div>
+        <div>
+          <div class="pc-name">Stackly Pro</div>
+          <div class="pc-desc" style="margin-top:6px;">Complete protection for personal use &mdash; every feature included.</div>
+        </div>
+        <div class="pc-price"><sup>$</sup><span class="pc-amt">9</span><span class="pc-period">/mo</span></div>
+        <div style="font-size:0.74rem;color:var(--dim);">Billed annually &mdash; save 40%</div>
+        <div class="pc-feats">
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Everything in Free</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> 5 devices protected</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Zero-log VPN (5,000+ servers)</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Dark web monitoring</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Password manager (unlimited)</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Priority 24/7 support</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Ad &amp; tracker blocker</div>
+        </div>
+        <a href="404.html" class="btn btn-primary btn-full">Start Free Trial</a>
+      </div>
+
+      <div class="pc reveal d2">
+        <div class="pc-icon">&#x1F48E;</div>
+        <div>
+          <div class="pc-name">Stackly Ultimate</div>
+          <div class="pc-desc" style="margin-top:6px;">Maximum protection for your whole family or business team.</div>
+        </div>
+        <div class="pc-price"><sup>$</sup><span class="pc-amt">19</span><span class="pc-period">/mo</span></div>
+        <div style="font-size:0.74rem;color:var(--dim);">Billed annually &mdash; unlimited devices</div>
+        <div class="pc-feats">
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Everything in Pro</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Unlimited devices</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Identity theft insurance</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Ransomware rollback</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Dedicated support agent</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> Family sharing (6 accounts)</div>
+          <div class="pc-feat"><div class="pc-check ch-yes">&#x2713;</div> SOC-as-a-Service access</div>
+        </div>
+        <a href="register.html" class="btn btn-violet btn-full">Register Ultimate</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ════════════════════════════════════════ -->
+<section id="testi">
+  <div class="section-inner text-center">
+    <div class="section-tag">Trusted by Millions</div>
+    <h2 class="section-h2 reveal">What Our <span>Users Say</span></h2>
+  </div>
+  <div class="testi-scroll">
+    <div class="testi-track">
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;Stackly blocked a ransomware attack that would have cost my business $50,000. The real-time alerts saved everything. Can&rsquo;t imagine running without it.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#00d4ff,#7c3aed)">RK</div>
+          <div><div class="t-name">Rahul Kapoor</div><div class="t-role">Founder, TechVentures India</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;The dark web monitor alerted me about my email breach before the news even reported it. Changed every password instantly. Stackly is incredible.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#10b981,#06b6d4)">SA</div>
+          <div><div class="t-name">Sana Ahmed</div><div class="t-role">Digital Marketing Lead, Dubai</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;Switched from Norton after 10 years. Stackly&rsquo;s performance is insane &mdash; my laptop actually feels faster. The VPN is the best I&rsquo;ve ever used.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#f59e0b,#f43f5e)">JL</div>
+          <div><div class="t-name">James Liu</div><div class="t-role">Software Engineer, Singapore</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;As IT admin for 200 staff, Stackly&rsquo;s central dashboard saves me 4+ hours per week. The threat visibility is unmatched at this price point.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#a855f7,#06b6d4)">AM</div>
+          <div><div class="t-name">Aisha Molani</div><div class="t-role">IT Manager, Lagos Enterprise</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;I travel constantly and public Wi-Fi always scared me. Stackly&rsquo;s VPN makes me feel safe anywhere. The app is beautiful too &mdash; design matters.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#f97316,#f59e0b)">KM</div>
+          <div><div class="t-name">Kenji Mori</div><div class="t-role">Photographer &amp; Digital Nomad</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;Password manager found 3 of my passwords in a data breach. Stackly notified me instantly and guided me through updating everything. Five stars.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">LP</div>
+          <div><div class="t-name">Laura Perez</div><div class="t-role">Accountant, Madrid</div></div>
+        </div>
+      </div>
+      <!-- Duplicated set for seamless infinite scroll -->
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;Stackly blocked a ransomware attack that would have cost my business $50,000. The real-time alerts saved everything. Can&rsquo;t imagine running without it.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#00d4ff,#7c3aed)">RK</div>
+          <div><div class="t-name">Rahul Kapoor</div><div class="t-role">Founder, TechVentures India</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;The dark web monitor alerted me about my email breach before the news even reported it. Changed every password instantly. Stackly is incredible.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#10b981,#06b6d4)">SA</div>
+          <div><div class="t-name">Sana Ahmed</div><div class="t-role">Digital Marketing Lead, Dubai</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;As IT admin for 200 staff, Stackly&rsquo;s central dashboard saves me 4+ hours per week. Unmatched visibility at this price.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#a855f7,#06b6d4)">AM</div>
+          <div><div class="t-name">Aisha Molani</div><div class="t-role">IT Manager, Lagos Enterprise</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;I travel constantly and public Wi-Fi always scared me. Stackly&rsquo;s VPN makes me feel safe anywhere in the world.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#f97316,#f59e0b)">KM</div>
+          <div><div class="t-name">Kenji Mori</div><div class="t-role">Photographer &amp; Digital Nomad</div></div>
+        </div>
+      </div>
+      <div class="testi-c">
+        <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p class="testi-txt">&ldquo;Password manager found 3 of my passwords in a data breach and guided me to fix everything instantly. Five stars every time.&rdquo;</p>
+        <div class="testi-author">
+          <div class="t-av" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">LP</div>
+          <div><div class="t-name">Laura Perez</div><div class="t-role">Accountant, Madrid</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG ════════════════════════════════════════════════ -->
+<section id="blog">
+  <div class="section-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div class="reveal">
+        <div class="section-tag">Security Intel</div>
+        <h2 class="section-h2">Latest from <span>Stackly Blog</span></h2>
+      </div>
+      <a href="404.html" class="btn btn-ghost">All Articles &rarr;</a>
+    </div>
+    <div class="blog-g">
+      <div class="blog-c reveal">
+        <div class="blog-img">
+          <img src="images/blog_new1.webp" alt="AI Cyber Threats 2026">
+          <span class="blog-cat">Threat Report</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span>July 20, 2026</span><span>8 min read</span></div>
+          <h3>Top 10 Cyber Threats Dominating 2026</h3>
+          <p>From AI-generated phishing to post-quantum cryptography &mdash; our researchers expose what&rsquo;s targeting users this year.</p>
+          <a href="404.html" class="btn btn-ghost btn-sm">Read More &rarr;</a>
+        </div>
+      </div>
+      <div class="blog-c reveal d1">
+        <div class="blog-img">
+          <img src="images/blog_new2.webp" alt="VPN Guide 2026">
+          <span class="blog-cat">VPN Guide</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span>July 15, 2026</span><span>7 min read</span></div>
+          <h3>Why VPN Is No Longer Optional in 2026</h3>
+          <p>ISPs sell your data, hackers exploit public Wi-Fi, and surveillance is rising. Here&rsquo;s why VPN is essential now.</p>
+          <a href="404.html" class="btn btn-ghost btn-sm">Read More &rarr;</a>
+        </div>
+      </div>
+      <div class="blog-c reveal d2">
+        <div class="blog-img">
+          <img src="images/blog_new3.webp" alt="Ransomware Defense">
+          <span class="blog-cat">Ransomware</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span>July 10, 2026</span><span>6 min read</span></div>
+          <h3>How to Survive a Ransomware Attack</h3>
+          <p>Payments hit $1.1 billion last year. Learn proven prevention, detection and recovery strategies that actually work.</p>
+          <a href="404.html" class="btn btn-ghost btn-sm">Read More &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA — Full-bleed brand section (FMCG style) ════════ -->
+<section id="cta-section">
+  <div class="cta-grid-overlay"></div>
+  <div class="cta-inner reveal">
+    <h2>Ready to Stop <span>Being a Target?</span></h2>
+    <p>Join 50 million users who trust Stackly to protect their digital lives every single day. Free to start &mdash; premium for life.</p>
+    <div class="cta-actions">
+      <a href="404.html" class="btn btn-white btn-lg">&#x1F6E1;&#xFE0F;&nbsp; Start Free Protection</a>
+      <a href="404.html" class="btn btn-outline btn-lg">Explore Features &rarr;</a>
+    </div>
+    <div class="cta-trust">
+      <span>&#x2713;</span> No credit card &nbsp;&bull;&nbsp; <span>&#x2713;</span> Free forever plan &nbsp;&bull;&nbsp; <span>&#x2713;</span> Cancel anytime
+    </div>
+  </div>
+</section>
+
+<!-- ══ DOWNLOAD ════════════════════════════════════════════ -->
+<section id="download">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="section-tag">Get The App</div>
+      <h2 class="section-h2">Stackly for <span>Every Platform</span></h2>
+      <p class="section-desc" style="margin:0 auto;">One account. Complete protection on all your devices.</p>
+    </div>
+    <div class="dl-row">
+      <a href="#" class="dl-badge"><div class="dl-ico">&#x1FA9F;</div><div><div class="dl-lbl">Download for</div><div class="dl-name">Windows</div></div></a>
+      <a href="#" class="dl-badge"><div class="dl-ico">&#x1F34E;</div><div><div class="dl-lbl">Download for</div><div class="dl-name">macOS</div></div></a>
+      <a href="#" class="dl-badge"><div class="dl-ico">&#x1F4F1;</div><div><div class="dl-lbl">Get it on</div><div class="dl-name">Android</div></div></a>
+      <a href="#" class="dl-badge"><div class="dl-ico">&#x1F34F;</div><div><div class="dl-lbl">Available on</div><div class="dl-name">iOS / iPadOS</div></div></a>
+      <a href="#" class="dl-badge"><div class="dl-ico">&#x1F427;</div><div><div class="dl-lbl">Download for</div><div class="dl-name">Linux</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNERS TICKER ════════════════════════════════════ -->
+<div id="partners">
+  <p class="partners-lbl">Trusted by teams at</p>
+  <div class="partners-scroll">
+    <div class="partners-track">
+      <span class="partner-item">&#x1F3E6; HDFC Bank</span>
+      <span class="partner-item">&#x1F6CD;&#xFE0F; Flipkart</span>
+      <span class="partner-item">&#x1F48A; Apollo Hospitals</span>
+      <span class="partner-item">&#x2708;&#xFE0F; IndiGo Airlines</span>
+      <span class="partner-item">&#x1F3ED; Tata Consulting</span>
+      <span class="partner-item">&#x1F4E1; Jio Platforms</span>
+      <span class="partner-item">&#x1F697; Ola Electric</span>
+      <span class="partner-item">&#x1F9E0; Zoho Corp</span>
+      <span class="partner-item">&#x1F3E6; HDFC Bank</span>
+      <span class="partner-item">&#x1F6CD;&#xFE0F; Flipkart</span>
+      <span class="partner-item">&#x1F48A; Apollo Hospitals</span>
+      <span class="partner-item">&#x2708;&#xFE0F; IndiGo Airlines</span>
+      <span class="partner-item">&#x1F3ED; Tata Consulting</span>
+      <span class="partner-item">&#x1F4E1; Jio Platforms</span>
+      <span class="partner-item">&#x1F697; Ola Electric</span>
+      <span class="partner-item">&#x1F9E0; Zoho Corp</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NEWSLETTER ══════════════════════════════════════════ -->
+<section id="newsletter">
+  <div class="nl-wrap">
+    <div class="section-tag" style="margin:0 auto;">Weekly Intel</div>
+    <h2 class="section-h2 reveal">Security Tips in <span>Your Inbox</span></h2>
+    <p class="section-desc" style="margin:0 auto;">Join 2M+ readers. Weekly threat reports, zero spam. Unsubscribe anytime.</p>
+    <form class="nl-form" id="nl-form">
+      <input type="email" class="nl-input" placeholder="your@email.com" required>
+      <button type="submit" class="btn btn-primary">Subscribe &#x1F512;</button>
+    </form>
+    <p class="nl-note">&#x1F512; No spam. Your privacy is always protected.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <div class="footer-logo-ico">S</div>
+        <span class="footer-logo-name">Stackly</span>
+      </a>
+      <p class="footer-desc">Stackly is an AI-powered cybersecurity platform protecting 50M+ users worldwide from malware, phishing, ransomware and data breaches &mdash; 24/7.</p>
+      <div class="social-row">
+        <a href="404.html" class="social-btn" title="X / Twitter">&#x1D54F;</a>
+        <a href="404.html" class="social-btn" title="LinkedIn">in</a>
+        <a href="404.html" class="social-btn" title="Facebook">f</a>
+        <a href="404.html" class="social-btn" title="YouTube">&#x25B6;</a>
+        <a href="404.html" class="social-btn" title="Instagram">IG</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul class="footer-nav">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#">Download</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-nav">
+        <li><a href="about.html">About Stackly</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press Kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul class="footer-nav">
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Stackly Technologies Pvt. Ltd. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+<script src="home.js"></script>
+</body>
+</html>

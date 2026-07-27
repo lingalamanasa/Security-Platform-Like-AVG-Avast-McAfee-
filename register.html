@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+  <style>
+    body {
+      margin: 0; padding: 0; background: #020818 !important; color: white !important;
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+    .auth-split {
+      display: flex;
+      min-height: 100vh;
+    }
+    .auth-left {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5% 10%;
+      position: relative;
+      z-index: 10;
+      background: #020818 !important;
+    }
+    .auth-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: rgba(2,8,24,0.5);
+      border-left: 1px solid var(--border-glow);
+      overflow: hidden;
+    }
+    .auth-right::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at center, rgba(0,212,255,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .huge-logo {
+      font-family: var(--font-display);
+      font-size: clamp(250px, 35vw, 500px);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--cyan), var(--violet-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 80px rgba(0,212,255,0.2));
+      user-select: none;
+    }
+    .auth-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -2px;
+    }
+    .auth-form-wrap {
+      max-width: 440px;
+      width: 100%;
+    }
+    .auth-btn-ghost {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 14px;
+      border-radius: 100px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: white; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: 0.3s;
+      margin-bottom: 12px;
+    }
+    .auth-btn-ghost:hover {
+      background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2);
+    }
+    /* Role Selector */
+    .role-label {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--dim);
+      margin-bottom: 12px;
+    }
+    .role-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 20px;
+    }
+    .role-card {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 14px 10px; border-radius: 14px;
+      border: 1.5px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer; transition: all 0.25s; text-align: center;
+      gap: 6px;
+    }
+    .role-card:hover {
+      background: rgba(0,212,255,0.06);
+      border-color: rgba(0,212,255,0.3);
+    }
+    .role-card.selected {
+      border-color: var(--cyan);
+      background: rgba(0,212,255,0.1);
+      box-shadow: 0 0 16px rgba(0,212,255,0.15);
+    }
+    .role-card-icon { font-size: 1.6rem; }
+    .role-card-title {
+      font-size: 0.85rem; font-weight: 700; color: white;
+    }
+    .role-card-desc {
+      font-size: 0.72rem; color: var(--dim); line-height: 1.3;
+    }
+    .auth-divider {
+      display: flex; align-items: center; text-align: center; color: var(--dim);
+      font-size: 0.85rem; margin: 24px 0;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ''; flex: 1; border-bottom: 1px solid var(--border);
+    }
+    .auth-divider:not(:empty)::before { margin-right: .25em; }
+    .auth-divider:not(:empty)::after { margin-left: .25em; }
+    
+    .auth-input {
+      width: 100%; padding: 16px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px; color: white;
+      font-family: var(--font-body); font-size: 0.95rem;
+      margin-bottom: 16px; transition: 0.3s;
+    }
+    .auth-input:focus {
+      border-color: var(--cyan); outline: none; background: rgba(0,212,255,0.05);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+    }
+    .auth-btn-primary {
+      width: 100%; padding: 16px;
+      border-radius: 100px;
+      background: var(--cyan); color: #020818;
+      font-size: 1rem; font-weight: 700; border: none;
+      cursor: pointer; transition: 0.3s;
+      box-shadow: 0 0 20px rgba(0,212,255,0.4);
+    }
+    .auth-btn-primary:hover {
+      background: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.5);
+    }
+    .auth-footer-links {
+      margin-top: 30px; font-size: 0.9rem; color: var(--dim);
+    }
+    .auth-footer-links a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+    .auth-footer-links a:hover { text-decoration: underline; }
+    
+    /* Top Logo */
+    .top-logo {
+      display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 40px;
+    }
+    .top-logo-mark {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--violet-bright));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: #fff;
+    }
+    .top-logo-name {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: #fff;
+    }
+
+    @media (max-width: 992px) {
+      .auth-split { flex-direction: column-reverse; }
+      .auth-right { padding: 40px; border-left: none; border-bottom: 1px solid var(--border-glow); flex: none; min-height: 200px; }
+      .huge-logo { font-size: 120px; }
+      .auth-left { padding: 40px 24px; }
+      .auth-title { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-split">
+  <div class="auth-left">
+    <a href="index.html" class="top-logo">
+      <div class="top-logo-mark">S</div>
+      <span class="top-logo-name">Stackly</span>
+    </a>
+    
+    <h1 class="auth-title">Join the<br>fortress.</h1>
+    
+    <div class="auth-form-wrap">
+      <h2 style="font-size: 1.5rem; margin-bottom: 24px; font-weight: 800;">Create your account.</h2>
+      
+      <!-- Role Selector -->
+      <div class="role-label">Select your role</div>
+      <div class="role-grid" id="role-grid">
+        <div class="role-card selected" data-role="admin" onclick="selectRole(this)">
+          <span class="role-card-icon">🛡️</span>
+          <div class="role-card-title">Admin</div>
+          <div class="role-card-desc">Full system control</div>
+        </div>
+        <div class="role-card" data-role="analyst" onclick="selectRole(this)">
+          <span class="role-card-icon">🔍</span>
+          <div class="role-card-title">Security Analyst</div>
+          <div class="role-card-desc">Threat investigation</div>
+        </div>
+        <div class="role-card" data-role="user" onclick="selectRole(this)">
+          <span class="role-card-icon">👤</span>
+          <div class="role-card-title">Personal User</div>
+          <div class="role-card-desc">Device protection</div>
+        </div>
+        <div class="role-card" data-role="viewer" onclick="selectRole(this)">
+          <span class="role-card-icon">👁️</span>
+          <div class="role-card-title">Viewer</div>
+          <div class="role-card-desc">Read-only access</div>
+        </div>
+      </div>
+      
+      <form id="login-form">
+        <input type="email" class="auth-input" id="login-email" placeholder="Email or username" required>
+        <input type="password" class="auth-input" id="login-pass" placeholder="Password" required>
+        
+        <button type="submit" class="auth-btn-primary">Create account</button>
+      </form>
+      
+      <div class="auth-footer-links">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="auth-right">
+    <div class="huge-logo">S</div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+  let selectedRole = 'admin';
+
+  function selectRole(card) {
+    document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedRole = card.getAttribute('data-role');
+  }
+
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const name = email.split('@')[0];
+
+    const mockUser = { name, email, role: selectedRole };
+    localStorage.setItem(SS.KEY_USER, JSON.stringify(mockUser));
+
+    if (selectedRole === 'admin' || selectedRole === 'analyst') {
+      window.location.href = 'admin-dashboard.html';
+    } else {
+      window.location.href = 'user-dashboard.html';
+    }
+  });
+</script>
+
+</body>
+</html>

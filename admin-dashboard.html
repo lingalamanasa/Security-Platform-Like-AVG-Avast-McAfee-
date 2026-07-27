@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Stackly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+
+<!-- ╔══ SPLASH SCREEN ══╗ -->
+<div id="splash-screen">
+  <div class="splash-logo-wrap">
+    <div class="splash-rings">
+      <div class="splash-ring"></div>
+      <div class="splash-ring"></div>
+      <div class="splash-ring"></div>
+    </div>
+    <img src="images/stackly_logo.webp" class="splash-shield" alt="Stackly Logo" style="width:70px;height:70px;object-fit:contain;">
+    <div class="splash-brand-name">Stackly</div>
+    <div class="splash-tagline">Admin Console</div>
+  </div>
+  <div class="splash-progress-bar">
+    <div class="splash-progress-fill"></div>
+  </div>
+  <div class="splash-loading-text">Establishing secure connection...</div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<div class="dashboard-wrapper">
+  
+  <!-- ╔══ SIDEBAR ══╗ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="admin-dashboard.html" style="display:flex;align-items:center;text-decoration:none;gap:10px;">
+        <img src="images/stackly_logo.webp" alt="Stackly Logo" style="width:28px;height:28px;object-fit:contain;">
+        <div class="sidebar-logo-text">Stackly</div>
+      </a>
+      <button class="sidebar-toggle" id="sidebar-toggle">❮</button>
+    </div>
+    
+    <div class="sidebar-user">
+      <div class="sidebar-avatar" id="sb-avatar">AK</div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name" id="sb-name">Arjun Kapoor</div>
+        <div class="sidebar-user-role">System Administrator</div>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Overview</div>
+      <a href="#" class="sidebar-link active" data-tab="tab-overview">
+        <span class="sidebar-link-icon">📊</span>
+        <span class="sidebar-link-text">Dashboard</span>
+      </a>
+      <a href="#" class="sidebar-link" data-tab="tab-threats">
+        <span class="sidebar-link-icon">🚨</span>
+        <span class="sidebar-link-text">Active Threats</span>
+        <span class="sidebar-badge" style="background:#f43f5e;">12</span>
+      </a>
+      
+      <div class="sidebar-section-label">Management</div>
+      <a href="#" class="sidebar-link" data-tab="tab-users">
+        <span class="sidebar-link-icon">👥</span>
+        <span class="sidebar-link-text">Users & Access</span>
+      </a>
+      <a href="#" class="sidebar-link" data-tab="tab-devices">
+        <span class="sidebar-link-icon">💻</span>
+        <span class="sidebar-link-text">Endpoints</span>
+      </a>
+      <a href="#" class="sidebar-link" data-tab="tab-policies">
+        <span class="sidebar-link-icon">📋</span>
+        <span class="sidebar-link-text">Security Policies</span>
+      </a>
+      
+      <div class="sidebar-section-label">Analytics</div>
+      <a href="#" class="sidebar-link" data-tab="tab-reports">
+        <span class="sidebar-link-icon">📈</span>
+        <span class="sidebar-link-text">Reports</span>
+      </a>
+      <a href="#" class="sidebar-link" data-tab="tab-logs">
+        <span class="sidebar-link-icon">📜</span>
+        <span class="sidebar-link-text">Audit Logs</span>
+      </a>
+    </nav>
+    
+    <div class="sidebar-footer">
+      <a href="#" class="sidebar-link" data-tab="tab-settings">
+        <span class="sidebar-link-icon">⚙️</span>
+        <span class="sidebar-link-text">Settings</span>
+      </a>
+      <a href="#" class="sidebar-link" onclick="SS.logout()">
+        <span class="sidebar-link-icon">🚪</span>
+        <span class="sidebar-link-text">Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ╔══ MAIN DASHBOARD ══╗ -->
+  <main class="dashboard-main">
+    
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      <div>
+        <div class="topbar-title">Organization Overview</div>
+        <div class="topbar-subtitle">Stackly Enterprise Console</div>
+      </div>
+      
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" onclick="showToast('No new messages', 'info')">
+          ✉️
+        </button>
+        <button class="topbar-icon-btn" onclick="showToast('You have 12 critical alerts', 'error')">
+          🔔
+          <span class="topbar-notif-badge">12</span>
+        </button>
+        <div class="topbar-user" onclick="document.querySelector('[data-tab=\'tab-settings\']').click()">
+          <div class="topbar-avatar" id="tb-avatar">AK</div>
+          <div class="topbar-user-name" id="tb-name">Arjun Kapoor</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="dashboard-content">
+
+      <!-- ==========================================
+           TAB: OVERVIEW
+           ========================================== -->
+      <div class="tab-pane" id="tab-overview">
+        <div class="welcome-banner">
+          <div class="welcome-icon">👋</div>
+          <div class="welcome-text">
+            <h2>Welcome back, <span class="welcome-name" id="dash-welcome-name">Admin</span>!</h2>
+            <p>Your network is secure. BrainShield AI blocked 2,847 threats in the last 24 hours.</p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn btn-primary btn-sm" onclick="showToast('Full system scan started', 'info')">Run Global Scan</button>
+            <button class="btn btn-ghost btn-sm">Export Report</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-v">
+            <div class="kpi-header">
+              <span class="kpi-label">Total Threats Blocked</span>
+              <span class="kpi-icon">🛡️</span>
+            </div>
+            <div class="kpi-value">2.4M</div>
+            <div class="kpi-change up">↑ 12% vs last month</div>
+          </div>
+          <div class="kpi-card kpi-a">
+            <div class="kpi-header">
+              <span class="kpi-label">Active Users</span>
+              <span class="kpi-icon">👥</span>
+            </div>
+            <div class="kpi-value" id="kpi-users">1,248</div>
+            <div class="kpi-change up">↑ 34 new this week</div>
+          </div>
+          <div class="kpi-card kpi-r">
+            <div class="kpi-header">
+              <span class="kpi-label">Critical Alerts</span>
+              <span class="kpi-icon">🚨</span>
+            </div>
+            <div class="kpi-value" style="color:#f43f5e;">12</div>
+            <div class="kpi-change down">↓ 5% vs last week</div>
+          </div>
+          <div class="kpi-card kpi-e">
+            <div class="kpi-header">
+              <span class="kpi-label">Network Health</span>
+              <span class="kpi-icon">💓</span>
+            </div>
+            <div class="kpi-value">98%</div>
+            <div class="kpi-change up">Optimal state</div>
+          </div>
+        </div>
+
+        <div class="dash-grid-3">
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title">Threat Activity Trends</div>
+              <div>
+                <button class="widget-btn active">7D</button>
+                <button class="widget-btn">30D</button>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="threatChart"></canvas>
+            </div>
+          </div>
+
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title">Threat Types</div>
+            </div>
+            <div class="chart-container" style="height:200px;">
+              <canvas id="typeChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <!-- Recent Alerts -->
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title">Recent High-Priority Alerts</div>
+              <button class="widget-btn" onclick="document.querySelector('[data-tab=\'tab-threats\']').click()">View All</button>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="threat-table">
+                <thead>
+                  <tr>
+                    <th>Threat ID</th>
+                    <th>Type</th>
+                    <th>Severity</th>
+                    <th>Target</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#TR-8842</td>
+                    <td>Ransomware (LockBit)</td>
+                    <td><span class="sev-badge sev-critical">Critical</span></td>
+                    <td>SRV-01-DB</td>
+                    <td><span class="status-badge st-blocked">Blocked</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TR-8841</td>
+                    <td>SQL Injection</td>
+                    <td><span class="sev-badge sev-high">High</span></td>
+                    <td>Web App Firewall</td>
+                    <td><span class="status-badge st-investigating">Investigating</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TR-8840</td>
+                    <td>Phishing Attempt</td>
+                    <td><span class="sev-badge sev-medium">Medium</span></td>
+                    <td>john.doe@org</td>
+                    <td><span class="status-badge st-blocked">Blocked</span></td>
+                  </tr>
+                  <tr>
+                    <td>#TR-8839</td>
+                    <td>Unauthorized Access</td>
+                    <td><span class="sev-badge sev-high">High</span></td>
+                    <td>VPN Gateway</td>
+                    <td><span class="status-badge st-resolved">Resolved</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Live Activity Feed -->
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title">Live BrainShield Activity</div>
+              <span style="font-size:0.75rem;color:#10b981;font-weight:700;">● Live</span>
+            </div>
+            <div class="activity-feed" id="live-feed">
+              <div class="activity-item">
+                <div class="activity-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">✅</div>
+                <div class="activity-text">
+                  <strong>System Scan Completed</strong>
+                  <span>10,482 files scanned. 0 threats found.</span>
+                </div>
+                <div class="activity-time">Just now</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon" style="background:rgba(244,63,94,0.15);color:#f43f5e;">🚨</div>
+                <div class="activity-text">
+                  <strong>Login Failed</strong>
+                  <span>5 failed attempts from IP 192.168.1.104</span>
+                </div>
+                <div class="activity-time">2m ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon" style="background:rgba(124,58,237,0.15);color:#a855f7;">🤖</div>
+                <div class="activity-text">
+                  <strong>AI Model Updated</strong>
+                  <span>BrainShield signature set v4.2 applied.</span>
+                </div>
+                <div class="activity-time">15m ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">🛡️</div>
+                <div class="activity-text">
+                  <strong>Malware Blocked</strong>
+                  <span>Trojan.Win32.Generic blocked on Workstation-4</span>
+                </div>
+                <div class="activity-time">1h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+        <div class="dash-grid-2" style="margin-top:16px;">
+          <div class="widget">
+            <div class="widget-header"><div class="widget-title">System Resource Utilization</div></div>
+            <div class="health-grid">
+              <div class="health-item"><span class="health-label">Central AI Engine</span><div class="health-bar"><div class="health-bar-fill" style="width:45%;background:#a855f7;"></div></div><span class="health-value">45%</span></div>
+              <div class="health-item"><span class="health-label">Database IOPS</span><div class="health-bar"><div class="health-bar-fill" style="width:68%;background:#f59e0b;"></div></div><span class="health-value">68%</span></div>
+              <div class="health-item"><span class="health-label">Gateway Traffic</span><div class="health-bar"><div class="health-bar-fill" style="width:32%;background:#06b6d4;"></div></div><span class="health-value">32%</span></div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-header"><div class="widget-title">Global Threat Origin Map</div></div>
+            <div style="height:120px;background:repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0px,rgba(255,255,255,0.02) 2px,transparent 2px,transparent 8px);border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              <span style="font-size:3rem;opacity:0.2;">🗺️</span>
+              <div style="position:absolute;width:10px;height:10px;background:#f43f5e;border-radius:50%;top:30%;left:20%;box-shadow:0 0 10px #f43f5e;animation:splashPulse 2s infinite;"></div>
+              <div style="position:absolute;width:8px;height:8px;background:#f59e0b;border-radius:50%;bottom:40%;right:30%;box-shadow:0 0 8px #f59e0b;animation:splashPulse 1.5s infinite;"></div>
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;background:rgba(3,7,18,0.4);backdrop-filter:blur(2px);">
+                <span>Top Origin: Eastern Europe (42%)</span>
+                <span style="color:rgba(241,245,249,0.5);">Secondary: APAC (28%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+ </div>
+
+      <!-- ==========================================
+           TAB: USERS
+           ========================================== -->
+      <div class="tab-pane" id="tab-users" style="display:none;">
+        <div class="welcome-banner" style="margin-bottom:20px;">
+          <div class="welcome-icon">👥</div>
+          <div class="welcome-text">
+            <h2>User Management</h2>
+            <p>Manage access, roles, and view registered accounts.</p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn btn-primary btn-sm" onclick="showToast('Invitation sent', 'success')">+ Invite User</button>
+          </div>
+        </div>
+
+        <div class="widget">
+          <div class="widget-header">
+            <div class="widget-title">Registered Users</div>
+            <input type="text" class="form-control" style="width:250px;padding:6px 12px;" placeholder="Search users...">
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="user-table-body">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           TAB: DEVICES
+           ========================================== -->
+      <div class="tab-pane" id="tab-devices" style="display:none;">
+        <div class="welcome-banner" style="margin-bottom:20px;">
+          <div class="welcome-icon">💻</div>
+          <div class="welcome-text">
+            <h2>Endpoint Management</h2>
+            <p>Monitor and secure all connected devices across your organization.</p>
+          </div>
+        </div>
+        
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon v">🖥️</div>
+            <h3>Workstations</h3>
+            <p>450 Active • 12 Offline</p>
+          </div>
+          <div class="card">
+            <div class="card-icon a">📱</div>
+            <h3>Mobile Devices</h3>
+            <p>820 Active • 0 Offline</p>
+          </div>
+          <div class="card">
+            <div class="card-icon c">🗄️</div>
+            <h3>Servers</h3>
+            <p>45 Active • 2 Maintenance</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           TAB: POLICIES
+           ========================================== -->
+      <div class="tab-pane" id="tab-policies" style="display:none;">
+        <div class="welcome-banner" style="margin-bottom:20px;">
+          <div class="welcome-icon">📋</div>
+          <div class="welcome-text">
+            <h2>Security Policies</h2>
+            <p>Configure network rules, AI strictness, and firewall settings.</p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn btn-primary btn-sm">+ Create Policy</button>
+          </div>
+        </div>
+        
+        <div class="dash-grid-2">
+          <div class="widget">
+            <div class="widget-header"><div class="widget-title">Active Policies</div></div>
+            <div class="device-list">
+              <div class="device-item">
+                <div class="device-indicator online"></div>
+                <div class="device-info">
+                  <div class="device-name">Global Web Filter</div>
+                  <div class="device-status">Blocks malicious domains network-wide</div>
+                </div>
+                <button class="action-btn">Edit</button>
+              </div>
+              <div class="device-item">
+                <div class="device-indicator online"></div>
+                <div class="device-info">
+                  <div class="device-name">Strict USB Control</div>
+                  <div class="device-status">Denies unauthorized external drives</div>
+                </div>
+                <button class="action-btn">Edit</button>
+              </div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-header"><div class="widget-title">AI Heuristics Engine</div></div>
+            <p style="font-size:0.85rem;color:rgba(241,245,249,0.6);margin-bottom:14px;">Adjust BrainShield sensitivity. Higher strictness may cause false positives.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--bg);border-radius:8px;">
+              <span style="font-size:0.85rem;font-weight:700;">Protection Level</span>
+              <select class="form-control" style="width:auto;margin:0;">
+                <option>Low</option>
+                <option>Medium</option>
+                <option selected>High (Recommended)</option>
+                <option>Paranoid</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           TAB: SETTINGS
+           ========================================== -->
+      <div class="tab-pane" id="tab-settings" style="display:none;">
+        <div class="widget" style="max-width:600px;margin:0 auto;">
+          <div class="widget-header">
+            <div class="widget-title">Admin Profile Settings</div>
+          </div>
+          <form id="admin-settings-form">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" style="margin-bottom:14px;" value="Arjun Kapoor">
+            
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" style="margin-bottom:14px;" value="admin@stackly.com" readonly>
+            
+            <label class="form-label">Change Password</label>
+            <input type="password" class="form-control" style="margin-bottom:24px;" placeholder="Leave blank to keep current">
+            
+            <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;margin-bottom:20px;">
+              <h3 style="font-size:0.85rem;margin-bottom:14px;">Notification Preferences</h3>
+              
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <span style="font-size:0.85rem;">Email Alerts (Critical)</span>
+                <input type="checkbox" checked>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <span style="font-size:0.85rem;">Daily Summary Report</span>
+                <input type="checkbox" checked>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.85rem;">Login Notifications</span>
+                <input type="checkbox">
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-primary" onclick="showToast('Settings saved successfully', 'success')">Save Changes</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Generic placeholders for empty tabs -->
+      <div class="tab-pane" id="tab-threats" style="display:none;">
+        <div class="welcome-banner" style="margin-bottom:20px;">
+          <div class="welcome-icon">🚨</div>
+          <div class="welcome-text">
+            <h2>Active Threats Repository</h2>
+            <p>Detailed forensic view of intercepted malware and unauthorized access attempts.</p>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-header">
+            <div class="widget-title">Incident Response Log</div>
+            <button class="btn btn-primary btn-sm">Export PCAP</button>
+          </div>
+          <p style="font-size:0.85rem;color:rgba(241,245,249,0.6);">All active threats have been contained by BrainShield AI.</p>
+        </div>
+      </div>
+      
+      <div class="tab-pane" id="tab-reports" style="display:none;">
+        <div class="welcome-banner" style="margin-bottom:20px;">
+          <div class="welcome-icon">📈</div>
+          <div class="welcome-text">
+            <h2>Compliance & Reports</h2>
+            <p>Generate one-click auditor reports for HIPAA, SOC2, and GDPR.</p>
+          </div>
+        </div>
+        <div class="dash-grid-3">
+          <div class="card"><div class="card-icon v">📄</div><h3>SOC 2 Report</h3><button class="btn btn-ghost btn-full" style="margin-top:10px;">Download PDF</button></div>
+          <div class="card"><div class="card-icon a">🛡️</div><h3>HIPAA Status</h3><button class="btn btn-ghost btn-full" style="margin-top:10px;">View Dashboard</button></div>
+          <div class="card"><div class="card-icon c">📊</div><h3>Monthly Exec Summary</h3><button class="btn btn-ghost btn-full" style="margin-top:10px;">Generate</button></div>
+        </div>
+      </div>
+      
+      <div class="tab-pane" id="tab-logs" style="display:none;">
+        <div class="welcome-banner" style="margin-bottom:20px;">
+          <div class="welcome-icon">📜</div>
+          <div class="welcome-text">
+            <h2>System Audit Logs</h2>
+            <p>Immutable record of all administrative actions and system events.</p>
+          </div>
+        </div>
+        <div class="widget">
+          <table class="threat-table">
+            <thead><tr><th>Timestamp</th><th>Admin User</th><th>Action Taken</th><th>IP Address</th></tr></thead>
+            <tbody>
+              <tr><td>2 mins ago</td><td>Arjun Kapoor</td><td>Changed AI Strictness to High</td><td>10.0.1.45</td></tr>
+              <tr><td>1 hr ago</td><td>Arjun Kapoor</td><td>Banned user account ID 841</td><td>10.0.1.45</td></tr>
+              <tr><td>5 hrs ago</td><td>System (Auto)</td><td>Updated threat signatures v4.3</td><td>localhost</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+<script src="app.js"></script>
+<script>
+  // 1. Auth Check
+  const user = SS.requireAuth('admin');
+  if (user) {
+    const fn = user.name;
+    const initials = fn.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+    document.getElementById('sb-avatar').textContent = initials;
+    document.getElementById('tb-avatar').textContent = initials;
+    document.getElementById('sb-name').textContent = fn;
+    document.getElementById('tb-name').textContent = fn;
+    document.getElementById('dash-welcome-name').textContent = fn.split(' ')[0];
+  }
+
+  // 2. Splash Screen Logic
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('splash-screen').classList.add('hidden');
+    }, 1200);
+  });
+
+  // 3. Sidebar Toggle
+  const sidebar = document.getElementById('sidebar');
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '❯' : '❮';
+  });
+
+  mobileBtn.addEventListener('click', () => {
+    sidebar.classList.add('mobile-open');
+    overlay.classList.add('visible');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('visible');
+  });
+
+  // 4. Tab Switching
+  const links = document.querySelectorAll('.sidebar-link[data-tab]');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      links.forEach(l => l.classList.remove('active'));
+      panes.forEach(p => p.style.display = 'none');
+      
+      link.classList.add('active');
+      const tabId = link.getAttribute('data-tab');
+      document.getElementById(tabId).style.display = 'block';
+
+      // Close mobile sidebar if open
+      if(window.innerWidth <= 768) {
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('visible');
+      }
+
+      // Render Users if clicked
+      if (tabId === 'tab-users') renderUsers();
+    });
+  });
+
+  // 5. Render Users Table
+  function renderUsers() {
+    const tbody = document.getElementById('user-table-body');
+    const users = SS.getUsers();
+    document.getElementById('kpi-users').textContent = users.length;
+    
+    tbody.innerHTML = '';
+    users.forEach(u => {
+      const init = u.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+      const badge = u.role === 'admin' ? '<span class="status-badge st-blocked">Admin</span>' : '<span class="status-badge st-resolved">User</span>';
+      tbody.innerHTML += `
+        <tr>
+          <td>
+            <div class="user-cell">
+              <div class="user-cell-avatar" style="background:linear-gradient(135deg, ${u.role==='admin'?'#7c3aed,#f59e0b':'#10b981,#06b6d4'});">${init}</div>
+              <div>
+                <div class="user-cell-name">${u.name}</div>
+                <div class="user-cell-email">${u.email}</div>
+              </div>
+            </div>
+          </td>
+          <td>${badge}</td>
+          <td><span style="color:#10b981;">● Active</span></td>
+          <td>Just now</td>
+          <td>
+            <div class="action-btns">
+              <button class="action-btn">Edit</button>
+              <button class="action-btn danger">Ban</button>
+            </div>
+          </td>
+        </tr>
+      `;
+    });
+  }
+
+  // 6. Charts Init
+  setTimeout(() => {
+    // Shared Chart.js options for dark theme
+    Chart.defaults.color = 'rgba(241,245,249,0.5)';
+    Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+    
+    const tCtx = document.getElementById('threatChart').getContext('2d');
+    
+    // Create gradient
+    let gradient = tCtx.createLinearGradient(0, 0, 0, 200);
+    gradient.addColorStop(0, 'rgba(124,58,237,0.5)');
+    gradient.addColorStop(1, 'rgba(124,58,237,0.0)');
+
+    new Chart(tCtx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Threats Blocked',
+          data: [120, 190, 150, 280, 220, 310, 450],
+          borderColor: '#a855f7',
+          backgroundColor: gradient,
+          borderWidth: 2,
+          pointBackgroundColor: '#f59e0b',
+          pointBorderColor: '#030712',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { grid: { color: 'rgba(255,255,255,0.05)' }, beginAtZero: true }
+        }
+      }
+    });
+
+    const yCtx = document.getElementById('typeChart').getContext('2d');
+    new Chart(yCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Malware', 'Phishing', 'Ransomware', 'Other'],
+        datasets: [{
+          data: [55, 25, 15, 5],
+          backgroundColor: ['#7c3aed', '#f59e0b', '#f43f5e', '#06b6d4'],
+          borderWidth: 0,
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '75%',
+        plugins: {
+          legend: { position: 'right', labels: { boxWidth: 10, padding: 15 } }
+        }
+      }
+    });
+  }, 1500);
+
+  // 7. Live feed simulation
+  setInterval(() => {
+    const feed = document.getElementById('live-feed');
+    if(feed) {
+      const items = feed.children;
+      if(items.length > 5) feed.removeChild(items[items.length-1]);
+      
+      const el = document.createElement('div');
+      el.className = 'activity-item';
+      el.style.animation = 'fadeIn 0.5s ease';
+      el.innerHTML = `
+        <div class="activity-icon" style="background:rgba(6,182,212,0.15);color:#06b6d4;">🌐</div>
+        <div class="activity-text">
+          <strong>Network Rule Updated</strong>
+          <span>Firewall auto-blocked IP 45.33.22.1</span>
+        </div>
+        <div class="activity-time">Just now</div>
+      `;
+      feed.insertBefore(el, feed.firstChild);
+    }
+  }, 8000);
+</script>
+</body>
+</html>

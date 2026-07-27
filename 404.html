@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- Updated Security 404 Layout -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020818;
+      --cyan: #00d4ff;
+      --violet: #7928ca;
+      --text: #ffffff;
+      --dim: #8f9cae;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Cyber grid overlay background */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Radial glow in center */
+    body::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(121, 40, 202, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .floating-item {
+      position: absolute;
+      font-size: 3rem;
+      animation: float 6s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+      z-index: 2;
+    }
+    .shield { top: 15%; left: 15%; transform: rotate(-15deg); animation-delay: 0s; }
+    .key { top: 12%; left: 50%; transform: translateX(-50%) rotate(25deg); animation-delay: -2s; font-size: 2.5rem; }
+    .lock { top: 20%; right: 15%; transform: rotate(15deg); animation-delay: -4s; }
+    .bug { bottom: 20%; left: 20%; transform: rotate(-45deg); animation-delay: -1s; font-size: 2.2rem; filter: drop-shadow(0 0 15px rgba(255, 0, 128, 0.3)); }
+    .alert-siren { bottom: 15%; right: 25%; transform: rotate(10deg); animation-delay: -3s; font-size: 2.4rem; }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(var(--rot)); }
+      100% { transform: translateY(-20px) rotate(calc(var(--rot) + 12deg)); }
+    }
+
+    .shield { --rot: -15deg; }
+    .key { --rot: 25deg; }
+    .lock { --rot: 15deg; }
+    .bug { --rot: -45deg; }
+    .alert-siren { --rot: 10deg; }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      padding: 20px;
+    }
+
+    .error-code {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(8rem, 20vw, 12rem);
+      font-weight: 700;
+      line-height: 1;
+      margin: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.2));
+    }
+
+    .error-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--text);
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .error-desc {
+      font-size: 1.05rem;
+      color: var(--dim);
+      max-width: 520px;
+      margin: 20px auto 40px;
+      line-height: 1.6;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--cyan);
+      color: var(--bg);
+      border: 2px solid var(--cyan);
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    }
+    .btn-primary:hover {
+      background-color: #ffffff;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating Security Items -->
+  <div class="floating-item shield">🛡️</div>
+  <div class="floating-item key">🔑</div>
+  <div class="floating-item lock">🔒</div>
+  <div class="floating-item bug">👾</div>
+  <div class="floating-item alert-siren">🚨</div>
+
+  <div class="content">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">
+      This link was quarantined
+      <span style="font-size: 2rem; filter: drop-shadow(0 0 10px var(--cyan));">🔐</span>
+    </h2>
+    <p class="error-desc">
+      The file or directory you're trying to reach does not exist, or has been temporarily isolated by Stackly's AI threat firewall.
+    </p>
+
+    <div class="btn-group">
+      <a href="index.html" class="btn btn-primary">Back to Safety</a>
+      <a href="javascript:history.back()" class="btn btn-outline">Go Back</a>
+    </div>
+  </div>
+
+</body>
+</html>
