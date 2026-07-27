@@ -368,6 +368,27 @@
 }
 .mobile-menu-btn:hover { background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.3); color: #a855f7; }
 
+.mobile-topbar-logo {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.mobile-topbar-logo img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+.mobile-topbar-logo span {
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.3px;
+}
+
 .topbar-title { font-size: 0.98rem; font-weight: 800; letter-spacing: -0.3px; }
 .topbar-subtitle { font-size: 0.72rem; color: rgba(241,245,249,0.4); }
 
@@ -727,8 +748,8 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .sidebar.mobile-open { transform: translateX(0); }
   .mobile-menu-btn { display: flex; }
   .topbar { padding: 0 14px; gap: 8px; }
-  .topbar-title { font-size: 1rem; }
-  .topbar-subtitle { font-size: 0.75rem; }
+  .mobile-topbar-logo { display: flex; }
+  .topbar-text-group { display: none; }
   .dashboard-main { margin-left: 0 !important; width: 100%; overflow-x: hidden; }
   .dashboard-content { padding: 14px; overflow-x: hidden; }
   .kpi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }

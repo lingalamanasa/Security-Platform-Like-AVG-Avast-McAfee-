@@ -97,9 +97,16 @@
   <main class="dashboard-main">
     
     <!-- Topbar -->
+    <!-- Topbar -->
     <header class="topbar">
-      <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-      <div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        <a href="#" class="mobile-topbar-logo" onclick="document.querySelector('[data-tab=\'tab-overview\']').click(); return false;">
+          <img src="images/stackly_logo.webp" alt="Stackly Logo">
+          <span>Stackly</span>
+        </a>
+      </div>
+      <div class="topbar-text-group">
         <div class="topbar-title">Personal Dashboard</div>
         <div class="topbar-subtitle">Stackly Pro Protection</div>
       </div>
