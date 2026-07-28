@@ -65,9 +65,10 @@ select.form-ctrl{-webkit-appearance:none;appearance:none;cursor:pointer;}
 .nl-strip-input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:0.88rem;}
 .nl-strip-input::placeholder{color:var(--dim);}
 .about-split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
-.about-img-wrap{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--border-glow);box-shadow:0 0 80px rgba(0,212,255,0.1),0 40px 80px rgba(0,0,0,0.5);}
-.about-img-wrap img{width:100%;display:block;transition:transform 0.7s ease;}
-.about-img-wrap:hover img{transform:scale(1.04);}
+.about-img-wrap{position:relative;}
+.about-img-inner{border-radius:22px;overflow:hidden;border:1px solid var(--border-glow);box-shadow:0 0 80px rgba(0,212,255,0.1),0 40px 80px rgba(0,0,0,0.5);}
+.about-img-inner img{width:100%;display:block;transition:transform 0.7s ease;}
+.about-img-wrap:hover .about-img-inner img{transform:scale(1.04);}
 .about-chip{position:absolute;background:rgba(2,8,24,0.9);backdrop-filter:blur(16px);border:1px solid var(--border-glow);border-radius:14px;padding:12px 16px;z-index:2;}
 .about-chip.ac1{top:18px;left:-22px;}.about-chip.ac2{bottom:18px;right:-22px;}
 .ac-num{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--cyan);text-shadow:0 0 16px rgba(0,212,255,0.4);}
@@ -136,7 +137,9 @@ select.form-ctrl{-webkit-appearance:none;appearance:none;cursor:pointer;}
   <div class="section-inner">
     <div class="about-split">
       <div class="about-img-wrap reveal">
-        <img src="images/about_team.webp" alt="Stackly AI Workspace">
+        <div class="about-img-inner">
+          <img src="images/about_team.webp" alt="Stackly AI Workspace">
+        </div>
         <div class="about-chip ac1"><div class="ac-num" data-count="50" data-suffix="M+">0</div><div class="ac-lbl">Users Protected</div></div>
         <div class="about-chip ac2"><div class="ac-num" data-count="99" data-suffix=".7%">0</div><div class="ac-lbl">Detection Rate</div></div>
       </div>
@@ -258,8 +261,11 @@ select.form-ctrl{-webkit-appearance:none;appearance:none;cursor:pointer;}
 <footer>
   <div class="footer-g">
     <div class="footer-brand">
-      <a href="index.html" class="footer-logo"><div class="footer-logo-ico">S</div><span class="footer-logo-name">Stackly</span></a>
-      <p class="footer-desc">AI-powered cybersecurity platform protecting 50M+ users worldwide from malware, phishing, ransomware and data breaches.</p>
+      <a href="index.html" class="footer-logo">
+        <div class="footer-logo-ico">S</div>
+        <span class="footer-logo-name">Stackly</span>
+      </a>
+      <p class="footer-desc">Stackly is an AI-powered cybersecurity platform protecting 50M+ users worldwide from malware, phishing, ransomware and data breaches &mdash; 24/7.</p>
       <div class="social-row">
         <a href="404.html" class="social-btn" title="X / Twitter">&#x1D54F;</a>
         <a href="404.html" class="social-btn" title="LinkedIn">in</a>
@@ -268,13 +274,41 @@ select.form-ctrl{-webkit-appearance:none;appearance:none;cursor:pointer;}
         <a href="404.html" class="social-btn" title="Instagram">IG</a>
       </div>
     </div>
-    <div class="footer-col"><h4>Product</h4><ul class="footer-nav"><li><a href="services.html">Services</a></li><li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#download">Download</a></li></ul></div>
-    <div class="footer-col"><h4>Company</h4><ul class="footer-nav"><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div class="footer-col"><h4>Support</h4><ul class="footer-nav"><li><a href="contact.html">Help Center</a></li><li><a href="contact.html">Privacy</a></li><li><a href="contact.html">Terms</a></li></ul></div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul class="footer-nav">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#download">Download</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-nav">
+        <li><a href="about.html">About Stackly</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press Kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul class="footer-nav">
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
   </div>
   <div class="footer-bottom">
-    <p>&#169; 2026 Stackly Technologies Pvt. Ltd. All rights reserved.</p>
-    <div class="footer-links"><a href="contact.html">Privacy</a><a href="contact.html">Terms</a><a href="contact.html">Cookies</a></div>
+    <p>&copy; 2026 Stackly Technologies Pvt. Ltd. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
   </div>
 </footer>
 <div class="toast-wrap" id="toast-wrap"></div>
