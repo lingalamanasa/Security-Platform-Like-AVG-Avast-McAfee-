@@ -488,7 +488,7 @@ section { padding: 60px 48px; position: relative; }
 /* ════════════════════════════════
    STATS
    ════════════════════════════════ */
-#stats { padding: 70px 48px; background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(124,58,237,0.06)); border-top: 1px solid var(--border); }
+#stats { padding: 50px 48px; background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(124,58,237,0.06)); border-top: 1px solid var(--border); }
 .stats-g { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
 .stat-c { padding: 36px 28px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 22px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; transition: var(--ease); position: relative; overflow: hidden; }
 .stat-c::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,transparent,var(--cyan),transparent); opacity: 0; transition: var(--ease); }
