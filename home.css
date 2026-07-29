@@ -550,7 +550,7 @@ section { padding: 60px 48px; position: relative; }
    ════════════════════════════════ */
 #hiw { background: var(--bg-1); border-top: 1px solid var(--border); }
 .hiw-g { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 40px; position: relative; }
-.hiw-g::before { content: ''; position: absolute; top: 42px; left: calc(33.3% + 16px); right: calc(33.3% + 16px); height: 1px; background: linear-gradient(90deg,var(--cyan),var(--violet-bright)); }
+
 .hiw-c { display: flex; flex-direction: column; gap: 16px; padding: 36px 28px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; transition: var(--ease); }
 .hiw-c:hover { border-color: rgba(0,212,255,0.22); transform: translateY(-5px); }
 .hiw-num { width: 54px; height: 54px; border-radius: 50%; background: rgba(0,212,255,0.08); border: 2px solid rgba(0,212,255,0.25); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--cyan); position: relative; z-index: 1; }
